@@ -1,8 +1,8 @@
 #include <iostream>
 #include <conio.h>
 #include "MainMenu.h"
-#include "ChooseLanguageMenu.h"
-#include "EnglishVersion.h"
+#include "ChooseModeMenu.h"
+#include "MultiVersion.h"
 #include "RussianVersion.h"
 
 bool playAgain();
@@ -12,11 +12,11 @@ int main()
 	setlocale(LC_ALL, "Russian");
 
 	View * myview = new View;
-	ChooseLMView * myview1 = new ChooseLMView;
+	ChooseMView * myview1 = new ChooseMView;
 	
-	if (myview1->getIsEnglish() == true){
+	if (myview1->getIsMulti() == true){
 		do
-			EngGame();
+			MultiGame();
 		while (playAgain());
 	}
 	else

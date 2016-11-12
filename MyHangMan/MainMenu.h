@@ -35,10 +35,9 @@ public:
 	{
 
 		system("cls");
-		std::cout << "\n\n\n\n\t\t\tHANGMAN THE GAME\n\n\n"
-			<< "\t\t         ИГРА ВИСЕЛИЦА\n\n\n\n\n\n\n\n\n\n\n\n\n"
-			<< "\t\tpress 'enter' or 'space' to continue\n"
-			<< "\t      нажмите 'ввод' или 'пробел' для продолжения";
+		std::cout << "\n\n\n\n\n\n\n\n\t\t\tHANGMAN THE GAME\n\n\n"
+			<< "\n\n\n\n\n\n\n\n\n\n\n"
+			<< "\t\tpress 'enter' or 'space' to continue\n";
 		while (!menu1.getState())
 		{
 			controller1.setInput();

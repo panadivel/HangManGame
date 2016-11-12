@@ -1,4 +1,4 @@
-#include "EnglishVersion.h"
+#include "MultiVersion.h"
 
 #include <iostream>
 #include <string>
@@ -6,9 +6,9 @@
 #include <conio.h>
 
 
-//english version
+//multiplayer version
 
-void EngGame(){
+void MultiGame(){
 
 	// strings for hangman output
 
