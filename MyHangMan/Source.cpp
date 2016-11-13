@@ -3,7 +3,7 @@
 #include "MainMenu.h"
 #include "ChooseModeMenu.h"
 #include "MultiVersion.h"
-#include "RussianVersion.h"
+#include "SingleVersion.h"
 
 bool playAgain();
 
@@ -22,7 +22,7 @@ int main()
 	else
 	{
 		do
-			RusGame();
+			SingGame();
 		while (playAgain());
 	}
 

@@ -1,15 +1,20 @@
-#include "RussianVersion.h"
+#include "SingleVersion.h"
 
 #include <iostream>
 #include <string>
 #include <algorithm>
 #include <conio.h>
+#include <fstream>
+#include <vector>
+#include <random>
+#include <time.h>
 
 
-//russian version
+//single version
 
-void RusGame(){
-	setlocale(LC_ALL, "1251");
+std::string returnRandWord();
+
+void SingGame(){
 
 	// strings for hangman output
 
@@ -45,24 +50,18 @@ void RusGame(){
 
 	std::string hangmans[6] = { hangman1, hangman2, hangman3, hangman4, hangman5, hangman6 };
 
+
 	std::string word;
 	char ch;
-	std::string alphabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЬЭЮЯ";
+	std::string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	int mistakes = 0;
 	std::string playField;
 
 	system("cls");
 
-	std::cout << "\n\n               ЗАГАДАЙТЕ СЛОВО ДЛЯ СОПЕРНИКА: " << std::endl;
-	std::cout << "         (ваш соперник не должен смотреть на экран)" << std::endl;
-	std::getline(std::cin, word);
+	//pick a random word from a file
 
-	/*
-	//erasing digit, spaces and punctuation from the word
-	word.erase(std::remove_if(word.begin(), word.end(), ispunct), word.end());
-	word.erase(std::remove_if(word.begin(), word.end(), isdigit), word.end());
-	word.erase(std::remove_if(word.begin(), word.end(), isspace), word.end());
-	*/
+	word = returnRandWord();
 
 	std::transform(word.begin(), word.end(), word.begin(), ::toupper);
 
@@ -74,22 +73,22 @@ void RusGame(){
 	while (mistakes < 6){
 
 		std::cout << hangmans[mistakes];
-		std::cout << "\n\n" << playField << "\n\n";
-		std::cout << "   Оставшиеся буквы:\n" << alphabet << "\n\n\n";
+		std::cout << "\n\n\t" << playField << "\n\n";
+		std::cout << "   remaining characters:\n" << alphabet << "\n\n\n";
 
 		//check for win
 		if (word == playField){
-			std::cout << "\n\nПоздравляем! Вы ПОБЕДИЛИ!" << std::endl;
+			std::cout << "\n\nCongratulations! You WIN!" << std::endl;
 			break;
 		}
 
 		//check for loose
 		if (mistakes == 5){
-			std::cout << "\n\nВы проиграли, вы повешены!" << std::endl;
+			std::cout << "\n\nYou loose, you hanged!" << std::endl;
 			break;
 		}
 
-		std::cout << "Введите букву: ";
+		std::cout << "Enter a character: ";
 		std::cin >> ch;
 		ch = toupper(ch);
 
@@ -102,7 +101,7 @@ void RusGame(){
 			}
 		}
 		if (ismatch == false){
-			std::cout << "Неверная буква, попробуйте еще раз!";
+			std::cout << "Wrong character, try again!";
 			for (int i = 0; i < 800000000; i++){}
 			system("cls");
 			continue;
@@ -126,4 +125,27 @@ void RusGame(){
 		system("cls");
 	}
 
+}
+
+std::string returnRandWord()
+{
+	std::vector<std::string> words;
+	std::ifstream wordsfile("wordsForSingleGame.txt");
+	std::string w;
+
+	if (!wordsfile)
+	{
+		std::cerr << "Cannot open file \"wordsForSingleGame.txt\" with words\n";
+		exit(EXIT_FAILURE);
+	}
+
+	while (getline(wordsfile, w))
+	{
+		words.push_back(w);
+	}
+
+	srand(time(0));
+	int randInd = rand() % words.size();
+
+	return words[randInd];
 }
