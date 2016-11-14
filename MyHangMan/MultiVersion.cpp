@@ -1,4 +1,5 @@
 #include "MultiVersion.h"
+#include "Globals.h"
 
 #include <iostream>
 #include <string>
@@ -9,42 +10,6 @@
 //multiplayer version
 
 void MultiGame(){
-
-	// strings for hangman output
-
-	std::string hangman1 =
-		"          _\n"
-		"          |\n\n\n\n";
-	std::string hangman2 =
-		"          _\n"
-		"          |\n"
-		"          0\n\n\n";
-	std::string hangman3 =
-		"          _\n"
-		"          |\n"
-		"          0\n"
-		"          O \n\n";
-	std::string hangman4 =
-		"          _\n"
-		"          |\n"
-		"          0\n"
-		"         /O\\\n\n";
-	std::string hangman5 =
-		"          _\n"
-		"          |\n"
-		"          0\n"
-		"         /O\\\n"
-		"         / \n";
-	std::string hangman6 =
-		"          _\n"
-		"          |\n"
-		"          0\n"
-		"         /O\\\n"
-		"         //\n";
-
-	std::string hangmans[6] = { hangman1, hangman2, hangman3, hangman4, hangman5, hangman6 };
-
-
 	std::string word;
 	char ch;
 	std::string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
